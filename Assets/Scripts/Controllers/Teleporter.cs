@@ -21,7 +21,7 @@ public class Teleporter : MonoBehaviour
     [SerializeField] private CameraFadeIn _cameraFadeIn;
     private void Start()
     {
-        Teleport("r_dsp");
+        Teleport("start");
     }
 
 

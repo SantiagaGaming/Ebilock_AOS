@@ -13,10 +13,12 @@ public class BaseObject : MonoBehaviour, IClickAble, IHoverAble
 
     [SerializeField] protected SceneAosObject SceneAOSObject;
 
-    protected string helperName;
+    protected string HelperName;
 
     public virtual void OnClicked(InteractHand interactHand)
     {
+        if (SceneAOSObject == null)
+            return;
         SceneAOSObject.InvokeOnClick();
     }
 
@@ -28,7 +30,7 @@ public class BaseObject : MonoBehaviour, IClickAble, IHoverAble
     }
     public void SetHelperName(string value)
     {
-        helperName = value;
+        HelperName = value;
     }
     public string GetAOSName()
     {
