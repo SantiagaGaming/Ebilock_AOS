@@ -12,8 +12,19 @@ public class BaseObject : MonoBehaviour, IClickAble, IHoverAble
     public bool IsClickable { get; set; } = true;
 
     [SerializeField] protected SceneAosObject SceneAOSObject;
+    [SerializeField] protected Transform helperPos;
 
     protected string HelperName;
+    private void Start()
+    {
+        if (!Button)
+        {
+            var collider = gameObject.GetComponent<Collider>();
+            if (collider != null)
+                collider.enabled = false;
+            InstanceHandler.Instance.AOSColliderActivator.AddBaseObject(this);
+        }
+    }
 
     public virtual void OnClicked(InteractHand interactHand)
     {
