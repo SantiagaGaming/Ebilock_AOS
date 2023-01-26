@@ -11,7 +11,7 @@ public class BaseObject : MonoBehaviour, IClickAble, IHoverAble
     public bool IsHoverable { get; set; } = true;
     public bool IsClickable { get; set; } = true;
 
-    [SerializeField] protected SceneAosObject SceneAOSObject;
+    protected SceneAosObject SceneAOSObject;
     [SerializeField] protected Transform helperPos;
 
     protected string HelperName;
@@ -23,6 +23,7 @@ public class BaseObject : MonoBehaviour, IClickAble, IHoverAble
             if (collider != null)
                 collider.enabled = false;
             InstanceHandler.Instance.AOSColliderActivator.AddBaseObject(this);
+            SceneAOSObject = GetComponent<SceneAosObject>();
         }
     }
 
