@@ -16,7 +16,6 @@ public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
             return;
         SceneAOSObject.InvokeOnClick();
     }
-
     public virtual void OnHoverIn(InteractHand interactHand)
     {
     }
