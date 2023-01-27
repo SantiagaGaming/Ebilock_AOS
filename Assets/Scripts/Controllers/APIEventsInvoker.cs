@@ -6,8 +6,10 @@ public class APIEventsInvoker : MonoBehaviour
 {
     [SerializeField] private API _api;
     [SerializeField] private ConnectionChecker _connectionChecker;
-    //[SerializeField] private MeasureButtonsActivator _measureButtonsActivator;
+    [SerializeField] private CanvasChanger _canvasChanger;
     [SerializeField] private Teleporter _teleporter;
+    //[SerializeField] private MeasureButtonsActivator _measureButtonsActivator;
+
     //[SerializeField] private LocationController _locationController;
     //[SerializeField] private Diet _diet;
     //[SerializeField] private TimerView _timerView;
@@ -103,7 +105,7 @@ public class APIEventsInvoker : MonoBehaviour
     }
     private void OnActivateSceneObjectByName(string id, string name)
     {
-        //AOSColliderActivator.Instance.ActivateColliders(id, name);
+        InstanceHandler.Instance.AOSColliderActivator.ActivateColliders(id, name);
     }
     private void OnSetLastScreenText(string headertext, string commentText)
     {
@@ -123,7 +125,7 @@ public class APIEventsInvoker : MonoBehaviour
     }
     private void OnSetStartText(string headerText, string commentText, string buttonText, NextButtonState state)
     {
-        //_startScreenController.EnableStartScreen(headerText, HtmlToText.Instance.HTMLToTextReplace(commentText), buttonText, state);
+        _canvasChanger.EnableStartScreen(headerText, commentText, buttonText, state);
     }
     private void OnSetMeasureValue(float value)
     {

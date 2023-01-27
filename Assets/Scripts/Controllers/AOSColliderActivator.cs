@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class AOSColliderActivator : MonoBehaviour
 {
-    private List<BaseObject> _aosSceneObjects = new List<BaseObject>();
+    private List<SceneObject> _aosSceneObjects = new List<SceneObject>();
     public bool CanTouch { get; set; } = true;
-    public void AddBaseObject(BaseObject obj)
+    public void AddBaseObject(SceneObject obj)
     {
         _aosSceneObjects.Add(obj);
     }

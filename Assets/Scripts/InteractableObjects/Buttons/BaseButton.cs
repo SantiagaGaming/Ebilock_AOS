@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseButton : BaseObject
+public class BaseButton : SceneObject
 {
     public override void OnHoverIn(InteractHand interactHand)
     {

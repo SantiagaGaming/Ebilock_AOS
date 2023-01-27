@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using AosSdk.Core.PlayerModule;
 using UnityEngine.Events;
 
 public class Teleporter : MonoBehaviour
 {
-    [SerializeField] private Transform _startPosition;
+    public UnityAction<string> OnTeleportEnd;
+    public bool CanTeleport { get; set; } = true;
+    private bool _menu = false;
+
+    [SerializeField] private Transform _menuPosition;
     [SerializeField] private Transform _hallFieldPosition;
     [SerializeField] private Transform _hallDspPosition;
     [SerializeField] private Transform _hallShnPosition;
@@ -18,21 +21,21 @@ public class Teleporter : MonoBehaviour
     [SerializeField] private Transform _hallFromShnPosition;
     [SerializeField] private Transform _hallFromRelay1Position;
     [SerializeField] private Transform _hallFromRelay2Position;
+    [Space]
     [SerializeField] private CameraFadeIn _cameraFadeIn;
-    private void Start()
-    {
-        Teleport("start");
-    }
 
-
-    public UnityAction<string> OnTeleportEnd;
+    private Transform _currentPlayerPosition;
 
     private string _previousLocation;
+    private void Start()
+    {
+        _currentPlayerPosition = GetComponent<Transform>();
+    }
     public void Teleport(string locationName)
     {
         OnTeleportEnd?.Invoke(locationName);
         if (locationName == "start")
-            TeleportPlayer(_startPosition);
+            TeleportPlayer(_menuPosition);
          if (locationName == "hall" || locationName == "r_dsp" || locationName == "r_shn" || locationName == "relay1"||  locationName == "relay2" || locationName == "field")
         {
             if (_previousLocation == locationName)
@@ -83,12 +86,24 @@ public class Teleporter : MonoBehaviour
             }
         }
     }
+    public void TeleportToMenu()
+    {
+        if (!_menu)
+        {
+            OnTeleportEnd?.Invoke("menu");
+            _currentPlayerPosition.position = Player.Instance.transform.position;
+            TeleportPlayer(_menuPosition);
+        }
+        else TeleportPlayer(_currentPlayerPosition);
+      
 
+    }
     private void TeleportPlayer(Transform newPosition)
     {
+        if (!CanTeleport)
+            return;
         _cameraFadeIn.FadeStart = true;
         _cameraFadeIn.StartFade();
         Player.Instance.TeleportTo(newPosition);
     }
-
 }

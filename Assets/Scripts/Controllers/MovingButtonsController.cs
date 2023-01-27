@@ -5,26 +5,24 @@ using UnityEngine.Events;
 
 public class MovingButtonsController : MonoBehaviour
 {
-
     public UnityAction ButtonsPositionChanged;
     [HideInInspector] public string ObjectHelperName { get; set; }
     [HideInInspector] public string ObjectName { get; set; }
 
-    public BaseObject CurrentBaseObject { get; set; }
-    private MovingButtonsController() { }
+    public SceneObject CurrentBaseObject { get; set; }
 
     //private IScriptableAnimationObject _tempRepairableObject;
     //private IScriptableAnimationObject _tempPushableObject;
 
-    [SerializeField] private GameObject _watchButton;
-    [SerializeField] private GameObject _repairButton;
-    [SerializeField] private GameObject _repairButton_1;
+    [SerializeField] private GameObject _eyeButton;
+    [SerializeField] private GameObject _toolButton;
+    [SerializeField] private GameObject _toolButton_1;
     [SerializeField] private GameObject _handButton;
     [SerializeField] private GameObject _handButton_1;
     [SerializeField] private GameObject _handButton_2;
     [SerializeField] private GameObject _penButton;
 
-    public void SetMovingButtonsPosition(Vector3 position, BaseObject obj)
+    public void SetCurrentBaseObjectAndMovingButtonsPosition(Vector3 position, SceneObject obj)
     {
         HideAllButtons();
         transform.position = position;
@@ -32,15 +30,15 @@ public class MovingButtonsController : MonoBehaviour
     }
     public void ShowWatchButton()
     {
-        _watchButton.SetActive(true);
+        _eyeButton.SetActive(true);
     }
     public void ShowRepairButton()
     {
-        _repairButton.SetActive(true);
+        _toolButton.SetActive(true);
     }
     public void ShowRepair1Button()
     {
-        _repairButton_1.SetActive(true);
+        _toolButton_1.SetActive(true);
     }
     public void ShowHandButton()
     {
@@ -60,28 +58,28 @@ public class MovingButtonsController : MonoBehaviour
     }
     public void HideAllButtons()
     {
-        _watchButton.SetActive(false);
-        _repairButton.SetActive(false);
+        _eyeButton.SetActive(false);
+        _toolButton.SetActive(false);
         _handButton.SetActive(false);
         _handButton_1.SetActive(false);
         _handButton_2.SetActive(false);
         _penButton.SetActive(false);
-        _repairButton_1.SetActive(false);
+        _toolButton_1.SetActive(false);
         ButtonsPositionChanged?.Invoke();
     }
     public void SetWatchButtonText(string text)
     {
-        _watchButton.TryGetComponent(out MovingButton movingButton);
+        _eyeButton.TryGetComponent(out MovingButton movingButton);
         movingButton.SetActionText(HtmlToText.Instance.HTMLToTextReplace(text));
     }
     public void SetRepairButtonText(string text)
     {
-        _repairButton.TryGetComponent(out MovingButton movingButton);
+        _toolButton.TryGetComponent(out MovingButton movingButton);
         movingButton.SetActionText(HtmlToText.Instance.HTMLToTextReplace(text));
     }
     public void SetRepair1ButtonText(string text)
     {
-        _repairButton_1.TryGetComponent(out MovingButton movingButton);
+        _toolButton_1.TryGetComponent(out MovingButton movingButton);
         movingButton.SetActionText(HtmlToText.Instance.HTMLToTextReplace(text));
     }
     public void SetHandButtonText(string text)
