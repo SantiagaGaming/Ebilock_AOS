@@ -23,14 +23,11 @@ public class Teleporter : MonoBehaviour
     [SerializeField] private Transform _hallFromRelay2Position;
     [Space]
     [SerializeField] private CameraFadeIn _cameraFadeIn;
+    [SerializeField] private ModeController _modeController;
 
-    private Transform _currentPlayerPosition;
+    private Vector3 _currentPlayerPosition = new Vector3();
 
     private string _previousLocation;
-    private void Start()
-    {
-        _currentPlayerPosition = GetComponent<Transform>();
-    }
     public void Teleport(string locationName)
     {
         OnTeleportEnd?.Invoke(locationName);
@@ -91,7 +88,7 @@ public class Teleporter : MonoBehaviour
         if (!_menu)
         {
             _menu = true;
-            _currentPlayerPosition.position = Player.Instance.transform.position;
+            _currentPlayerPosition = new Vector3(_modeController.GetPlayerTransform().position.x, 0.1500001f, _modeController.GetPlayerTransform().position.z); ;
             TeleportPlayer(_menuPosition);
             OnTeleportEnd?.Invoke("menu");
         }
@@ -108,5 +105,13 @@ public class Teleporter : MonoBehaviour
         _cameraFadeIn.FadeStart = true;
         _cameraFadeIn.StartFade();
         Player.Instance.TeleportTo(newPosition);
+    }
+    private void TeleportPlayer(Vector3 newPos)
+    {
+        if (!CanTeleport)
+            return;
+        _cameraFadeIn.FadeStart = true;
+        _cameraFadeIn.StartFade();
+        Player.Instance.TeleportTo(newPos);
     }
 }
