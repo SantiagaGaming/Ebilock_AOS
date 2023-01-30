@@ -21,6 +21,7 @@ public class InstanceHandler : MonoBehaviour
     [SerializeField] private TimerView _timerView;
     [SerializeField] private MainMenuCanvas _mainMenuCanvas;
     [SerializeField] private Diet _diet;
+    [SerializeField] private ShupPositionChanger _shupPositionChanger;
 
     public AOSColliderActivator AOSColliderActivator => _aosColliderActivator;
     public MovingButtonsController MovingButtonsController => _movinButtonsController;
@@ -35,6 +36,7 @@ public class InstanceHandler : MonoBehaviour
     public Diet Diet => _diet;
     public Teleporter Teleporter => _teleporter;
     public BackButtonsActivator BackButtonsActivator => _backButtonsActivator;
+    public ShupPositionChanger ShupPositionChanger => _shupPositionChanger;
     private void Awake()
     {
         if(Instance==null)

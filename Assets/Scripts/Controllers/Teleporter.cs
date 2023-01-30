@@ -90,13 +90,16 @@ public class Teleporter : MonoBehaviour
     {
         if (!_menu)
         {
-            OnTeleportEnd?.Invoke("menu");
+            _menu = true;
             _currentPlayerPosition.position = Player.Instance.transform.position;
             TeleportPlayer(_menuPosition);
+            OnTeleportEnd?.Invoke("menu");
         }
-        else TeleportPlayer(_currentPlayerPosition);
-      
-
+        else
+        {
+            _menu = false;
+            TeleportPlayer(_currentPlayerPosition);
+        }
     }
     private void TeleportPlayer(Transform newPosition)
     {
