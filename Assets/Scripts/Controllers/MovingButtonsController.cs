@@ -32,11 +32,11 @@ public class MovingButtonsController : MonoBehaviour
     {
         _eyeButton.SetActive(true);
     }
-    public void ShowRepairButton()
+    public void ShowToolButton()
     {
         _toolButton.SetActive(true);
     }
-    public void ShowRepair1Button()
+    public void ShowTool1Button()
     {
         _toolButton_1.SetActive(true);
     }
@@ -72,12 +72,12 @@ public class MovingButtonsController : MonoBehaviour
         _eyeButton.TryGetComponent(out MovingButton movingButton);
         movingButton.SetActionText(HtmlToText.Instance.HTMLToTextReplace(text));
     }
-    public void SetRepairButtonText(string text)
+    public void SetToolButtonText(string text)
     {
         _toolButton.TryGetComponent(out MovingButton movingButton);
         movingButton.SetActionText(HtmlToText.Instance.HTMLToTextReplace(text));
     }
-    public void SetRepair1ButtonText(string text)
+    public void SetTool1ButtonText(string text)
     {
         _toolButton_1.TryGetComponent(out MovingButton movingButton);
         movingButton.SetActionText(HtmlToText.Instance.HTMLToTextReplace(text));

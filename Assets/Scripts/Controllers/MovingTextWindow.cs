@@ -19,6 +19,15 @@ public class MovingTextWindow : MonoBehaviour
         _helperPos = newPos;
         StartCoroutine("GetHelpName");
     }
+    public void SetPosition(Transform newPos)
+    {
+        _helperPos = newPos;
+    }
+    public void ShowWindowWithText(string text)
+    {
+        _canvasObject.SetActive(true);
+        _textMesh.text = HtmlToText.Instance.HTMLToTextReplace(text);
+    }
     public void HidetextHelper()
     {
         _timer = 0.3f;

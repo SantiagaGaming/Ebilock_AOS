@@ -12,14 +12,14 @@ public class SceneObject : BaseObject
     [SerializeField] protected OutlineCore[] OutlineObjects;
 
     protected string HelperName;
-    private void Start()
+    protected void Start()
     {
         if (!Button)
         {
             var collider = gameObject.GetComponent<Collider>();
             if (collider != null)
                 collider.enabled = false;
-            InstanceHandler.Instance.AOSColliderActivator.AddBaseObject(this);
+            InstanceHandler.Instance.AOSColliderActivator.AddSceneObject(this);
             SceneAOSObject = GetComponent<SceneAosObject>();
         }
     }

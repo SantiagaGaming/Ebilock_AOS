@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using AosSdk.Core.PlayerModule;
 using TMPro;
+using System.Linq;
 
 public class MainMenuCanvas : BaseCanvas
 {
@@ -14,15 +14,16 @@ public class MainMenuCanvas : BaseCanvas
     [SerializeField] private TextMeshProUGUI _infoText;
     [SerializeField] private TextMeshProUGUI _exitSureText;
     [SerializeField] private TextMeshProUGUI _exitText;
+    [SerializeField] private TextMeshProUGUI _evalText;
     [SerializeField] private TextMeshProUGUI _warnText;
-    public void ShowMainMenuScreen(bool value)
+    public void ShowCanvasByName(string screenName)
     {
           foreach (var screen in _allMenuScreens)
         {
             screen.SetActive(false);
         }
-        if(value)
-        _mainMenuScreen.SetActive(true);
+      var screenToshow = _allMenuScreens.FirstOrDefault(s => s.name == screenName);
+        screenToshow.SetActive(true);
     }
     public void SetMenuText(string headText, string commentText, string exitSureText)
     {
@@ -36,4 +37,16 @@ public class MainMenuCanvas : BaseCanvas
         _exitText.text = HtmlToText.Instance.HTMLToTextReplace(exitText);
         _warnText.text = HtmlToText.Instance.HTMLToTextReplace(warntext);
     }
+    public void SetText(string headText, string commentText)
+    {
+        _infoHeaderText.text = headText;
+        _infoText.text = commentText;
+    }
+    public void SetText(string headText, string commentText, string evalText)
+    {
+        _infoHeaderText.text = headText;
+        _infoText.text = commentText;
+        _evalText.text = evalText;
+    }
+
 }

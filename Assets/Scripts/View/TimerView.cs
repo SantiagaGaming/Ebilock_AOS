@@ -18,5 +18,4 @@ public class TimerView : MonoBehaviour
         _timerText.text = _timer.ReturnTime();
         _vrTimerText.text = _timer.ReturnTime();
     }
-
 }
