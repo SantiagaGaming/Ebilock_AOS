@@ -8,25 +8,18 @@ public class MovingTextWindow : MonoBehaviour
     [SerializeField]private TextMeshProUGUI _textMesh;
     [SerializeField] private GameObject _canvasObject;
 
-
     private string _name;
     private Transform _helperPos;
     private float _timer = 0.3f;
 
-    public void ShowTextHelper(string name, Transform newPos)
-    {
-        _name = name;
-        _helperPos = newPos;
-        StartCoroutine("GetHelpName");
-    }
     public void SetPosition(Transform newPos)
     {
         _helperPos = newPos;
     }
     public void ShowWindowWithText(string text)
     {
-        _canvasObject.SetActive(true);
         _textMesh.text = HtmlToText.Instance.HTMLToTextReplace(text);
+        StartCoroutine("GetHelpName");
     }
     public void HidetextHelper()
     {

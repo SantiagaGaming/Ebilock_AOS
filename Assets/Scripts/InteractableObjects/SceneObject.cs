@@ -26,7 +26,11 @@ public class SceneObject : BaseObject
     public override void OnHoverIn(InteractHand interactHand)
     {
         if (HelperPos != null)
-            InstanceHandler.Instance.ObjectsInfoWindow.ShowTextHelper(HelperName, HelperPos);
+        {
+            InstanceHandler.Instance.ObjectsInfoWindow.SetPosition(HelperPos);
+            InstanceHandler.Instance.ObjectsInfoWindow.ShowWindowWithText(HelperName);
+        }
+         
         EnableOutlines(true);
      }
     public override void OnHoverOut(InteractHand interactHand)

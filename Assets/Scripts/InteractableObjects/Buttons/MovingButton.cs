@@ -12,7 +12,8 @@ public class MovingButton : BaseButton
         transform.localScale *= 1.5f;
         if (HelperPos != null)
         {
-            InstanceHandler.Instance.ObjectsInfoWindow.ShowTextHelper(actionText, HelperPos);
+            InstanceHandler.Instance.ObjectsInfoWindow.SetPosition(HelperPos);
+            InstanceHandler.Instance.ObjectsInfoWindow.ShowWindowWithText(actionText);
         }
     }
     public override void OnHoverOut(InteractHand interactHand)
