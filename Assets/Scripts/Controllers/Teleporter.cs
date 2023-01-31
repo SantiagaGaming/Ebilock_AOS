@@ -30,6 +30,7 @@ public class Teleporter : MonoBehaviour
     private string _previousLocation;
     public void Teleport(string locationName)
     {
+   
         OnTeleportEnd?.Invoke(locationName);
         if (locationName == "start")
             TeleportPlayer(_menuPosition);
@@ -37,6 +38,7 @@ public class Teleporter : MonoBehaviour
         {
             if (_previousLocation == locationName)
                 return;
+            Debug.Log(locationName + "From teleport");
             if (locationName == "hall" && _previousLocation == "r_dsp")
             {
                 TeleportPlayer(_hallFromDspPosition);
@@ -56,6 +58,10 @@ public class Teleporter : MonoBehaviour
             else if (locationName == "hall" && _previousLocation == "relay2")
             {
                 TeleportPlayer(_hallFromRelay2Position);
+            }
+            else if (locationName == "hall")
+            {
+                TeleportPlayer(_hallFromFieldPosition);
             }
             else if (locationName == "field")
             {

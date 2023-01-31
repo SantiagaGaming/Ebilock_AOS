@@ -10,7 +10,6 @@ public class MenuButton : BaseButton
 
     public override void OnClicked(InteractHand interactHand)
     {
-        base.OnClicked(interactHand);
         _showScreen.SetActive(true);
         _hideScreen.SetActive(false);
     }
