@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SceneObject : BaseObject
 {
-    public bool Button;
+    public bool NonAOS;
 
     [SerializeField] protected Transform HelperPos;
     [SerializeField] protected OutlineCore[] OutlineObjects;
@@ -14,7 +14,7 @@ public class SceneObject : BaseObject
     protected string HelperName;
     protected void Start()
     {
-        if (!Button || SceneAOSObject == null)
+        if (!NonAOS)
         {
             var collider = gameObject.GetComponent<Collider>();
             if (collider != null)
