@@ -16,9 +16,7 @@ public class SceneObject : BaseObject
     {
         if (!NonAOS)
         {
-            var collider = gameObject.GetComponent<Collider>();
-            if (collider != null)
-                collider.enabled = false;
+            EnableObject(false);
             InstanceHandler.Instance.AOSColliderActivator.AddSceneObject(this);
             SceneAOSObject = GetComponent<SceneAosObject>();
         }
