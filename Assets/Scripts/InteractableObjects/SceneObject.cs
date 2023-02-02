@@ -14,7 +14,7 @@ public class SceneObject : BaseObject
     protected string HelperName;
     protected void Start()
     {
-        if (!Button && SceneAOSObject != null)
+        if (!Button || SceneAOSObject == null)
         {
             var collider = gameObject.GetComponent<Collider>();
             if (collider != null)
