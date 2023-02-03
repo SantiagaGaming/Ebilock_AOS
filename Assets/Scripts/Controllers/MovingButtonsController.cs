@@ -12,9 +12,6 @@ public class MovingButtonsController : MonoBehaviour
     public SceneObject CurrentBaseObject { get; set; }
     public IHandObject HandObject { get; set; }
 
-    //private IScriptableAnimationObject _tempRepairableObject;
-    //private IScriptableAnimationObject _tempPushableObject;
-
     [SerializeField] private GameObject _eyeButton;
     [SerializeField] private GameObject _toolButton;
     [SerializeField] private GameObject _toolButton_1;

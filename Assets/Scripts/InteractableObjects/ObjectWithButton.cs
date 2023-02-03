@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class ObjectWithButton : SceneObject
 {
-    [SerializeField] private Transform _buttonsPos;
-    private IHandObject _handObject;
+    [SerializeField] protected Transform _buttonsPos;
+
+    protected DisabableObject DisabableObject;
 
     public override void OnClicked(InteractHand interactHand)
     {
@@ -16,9 +17,11 @@ public class ObjectWithButton : SceneObject
             return;
         InstanceHandler.Instance.MovingButtonsController.SetCurrentBaseObjectAndMovingButtonsPosition(_buttonsPos.position, this);
         InstanceHandler.Instance.MovingButtonsController.ObjectHelperName = HelperName;
+        InstanceHandler.Instance.ReactionInfoWindow.HidetextHelper();
         InstanceHandler.Instance.MovingButtonsController.HandObject = null;
-        _handObject = GetComponent(typeof(IHandObject)) as IHandObject;
-        if (_handObject != null)
-            InstanceHandler.Instance.MovingButtonsController.HandObject = _handObject;
+        InstanceHandler.Instance.SceneAosObject = SceneAOSObject;
+        DisabableObject = GetComponent<DisabableObject>();
+        if (DisabableObject != null)
+            InstanceHandler.Instance.MovingButtonsController.HandObject = DisabableObject;
     }
 }

@@ -28,7 +28,6 @@ public class SceneObject : BaseObject
             InstanceHandler.Instance.ObjectsInfoWindow.SetPosition(HelperPos);
             InstanceHandler.Instance.ObjectsInfoWindow.ShowWindowWithText(HelperName);
         }
-         
         EnableOutlines(true);
      }
     public override void OnHoverOut(InteractHand interactHand)
@@ -53,7 +52,6 @@ public class SceneObject : BaseObject
             return SceneAOSObject.ObjectId;
         else return null;
     }
-
     protected void EnableOutlines(bool value)
     {
         if (OutlineObjects != null)
