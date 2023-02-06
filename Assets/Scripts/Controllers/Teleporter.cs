@@ -12,11 +12,13 @@ public class Teleporter : MonoBehaviour
 
     [SerializeField] private Transform _menuPosition;
     [SerializeField] private Transform _hallFieldPosition;
+    [SerializeField] private Transform _hallFeedPosition;
     [SerializeField] private Transform _hallDspPosition;
     [SerializeField] private Transform _hallShnPosition;
     [SerializeField] private Transform _hallRelay1Position;
     [SerializeField] private Transform _hallRelay2Position;
     [SerializeField] private Transform _hallFromFieldPosition;
+    [SerializeField] private Transform _hallFromFeedPosition;
     [SerializeField] private Transform _hallFromDspPosition;
     [SerializeField] private Transform _hallFromShnPosition;
     [SerializeField] private Transform _hallFromRelay1Position;
@@ -34,7 +36,7 @@ public class Teleporter : MonoBehaviour
         OnTeleportEnd?.Invoke(locationName);
         if (locationName == "start")
             TeleportPlayer(_menuPosition);
-         if (locationName == "hall" || locationName == "r_dsp" || locationName == "r_shn" || locationName == "relay1"||  locationName == "relay2" || locationName == "field")
+         if (locationName == "hall" || locationName == "r_dsp" || locationName == "r_shn" || locationName == "relay1"||  locationName == "relay2" || locationName == "field" || locationName == "feed")
         {
             if (_previousLocation == locationName)
                 return;
@@ -59,6 +61,10 @@ public class Teleporter : MonoBehaviour
             {
                 TeleportPlayer(_hallFromRelay2Position);
             }
+            else if (locationName == "hall" && _previousLocation == "feed")
+            {
+                TeleportPlayer(_hallFromFeedPosition);
+            }
             else if (locationName == "hall")
             {
                 TeleportPlayer(_hallFromFieldPosition);
@@ -82,6 +88,10 @@ public class Teleporter : MonoBehaviour
             else if (locationName == "relay2")
             {
                 TeleportPlayer(_hallRelay2Position);
+            }
+            else if (locationName == "feed")
+            {
+                TeleportPlayer(_hallFeedPosition);
             }
             if (_previousLocation != locationName)
             {
