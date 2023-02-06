@@ -118,7 +118,6 @@ public class Teleporter : MonoBehaviour
     {
         if (!CanTeleport)
             return;
-        _cameraFadeIn.FadeStart = true;
         _cameraFadeIn.StartFade();
         Player.Instance.TeleportTo(newPosition);
     }
@@ -126,7 +125,6 @@ public class Teleporter : MonoBehaviour
     {
         if (!CanTeleport)
             return;
-        _cameraFadeIn.FadeStart = true;
         _cameraFadeIn.StartFade();
         Player.Instance.TeleportTo(newPos);
     }
