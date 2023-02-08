@@ -69,7 +69,7 @@ public class APIEventsInvoker : MonoBehaviour
     }
     private void OnSetLoationToTeleport(string location)
     {
-       InstanceHandler.Instance.Teleporter.Teleport(location);
+        InstanceHandler.Instance.Teleporter.Teleport(location);
     }
     private void OnSetLocationTextToLocationController(string location)
     {
@@ -130,10 +130,11 @@ public class APIEventsInvoker : MonoBehaviour
     private void OnActivaneBackButton(string actionName)
     {
         InstanceHandler.Instance.BackButtonsActivator.ActionToInvoke = actionName;
+        InstanceHandler.Instance.BackButtonsActivator.EnableCurrentBackButton(true);
     }
     private void OnAddButtonToMeasureButtonsList(string buttonName)
     {
-       InstanceHandler.Instance.MeasureButtonsActivator.AddButtonToList(buttonName);
+        InstanceHandler.Instance.MeasureButtonsActivator.AddButtonToList(buttonName);
     }
     private void OnActivateSceneObjectByName(string id, string name)
     {
@@ -148,7 +149,7 @@ public class APIEventsInvoker : MonoBehaviour
     {
         InstanceHandler.Instance.MainMenuCanvas.ShowCanvasByName("LastWindow");
         InstanceHandler.Instance.MainMenuCanvas.SetText(headertext, commentText, evalText);
-  
+
     }
     private void OnSetExitText(string exitText, string warntext)
     {
@@ -160,7 +161,7 @@ public class APIEventsInvoker : MonoBehaviour
     }
     private void OnSetStartText(string headerText, string commentText, string buttonText, NextButtonState state)
     {
-       InstanceHandler.Instance.CanvasChanger.EnableStartScreen(headerText, commentText, buttonText, state);
+        InstanceHandler.Instance.CanvasChanger.EnableStartScreen(headerText, commentText, buttonText, state);
     }
     private void OnSetMeasureValue(float value)
     {

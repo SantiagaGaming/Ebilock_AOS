@@ -13,6 +13,8 @@ public class BackButton : BaseButton
         InstanceHandler.Instance.MovingButtonsController.HideAllButtons();
         API api = FindObjectOfType<API>();
         api.OnInvokeNavAction(InstanceHandler.Instance.BackButtonsActivator.ActionToInvoke);
+        //InstanceHandler.Instance.PlaceAnimationObject.PlayScriptableAnimation();
+        //InstanceHandler.Instance.PlaceAnimationObject = null;
         InstanceHandler.Instance.BackButtonsActivator.SetCurrentBackButton(null);
         //ShupController shup = FindObjectOfType<ShupController>();
         //shup.ResetShupPosition();

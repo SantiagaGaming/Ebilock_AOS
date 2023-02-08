@@ -6,6 +6,7 @@ public class InstanceHandler : MonoBehaviour
 {
     public static InstanceHandler Instance;
     public SceneAosObject SceneAosObject { get; set; }
+    public ObjectWithAnimation PlaceAnimationObject { get; set; }
 
     [SerializeField] private AOSColliderActivator _aosColliderActivator;
     [SerializeField] private BackButtonsActivator _backButtonsActivator;
@@ -38,7 +39,7 @@ public class InstanceHandler : MonoBehaviour
     public ShupPositionChanger ShupPositionChanger => _shupPositionChanger;
     private void Awake()
     {
-        if(Instance==null)
+        if (Instance == null)
             Instance = this;
     }
 }
